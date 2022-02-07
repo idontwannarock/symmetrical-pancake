@@ -35,3 +35,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### Customized Ignore ###
+src/main/resources/config/
