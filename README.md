@@ -7,6 +7,8 @@ A project to make dear Jessica's life easier.
 ## Pre-requisite
 
 - JDK 11+
+- PostgreSQL13+ installed with user `postgres` and password `password`
+- (Optional if you want to build it yourself) Gradle 7.3.3+
 
 ## TL;DR
 
@@ -18,6 +20,6 @@ To run the app in MacOS or Linux:
 
 To run in Windows:
 
-```batch
+```bat
 .\gradlew.bat bootRun
 ```
