@@ -1,6 +1,6 @@
-package com.jandh.symmetricalpancake.usecase;
+package com.jhforfun.symmetricalpancake.usecase;
 
-import com.jandh.symmetricalpancake.util.CommandStatus;
+import com.jhforfun.symmetricalpancake.util.CommandStatus;
 
 public interface CommandOutput {
 

@@ -1,4 +1,4 @@
-package com.jandh.symmetricalpancake.usecase.product;
+package com.jhforfun.symmetricalpancake.usecase.product;
 
 import java.util.Optional;
 

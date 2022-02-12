@@ -1,6 +1,6 @@
-package com.jandh.symmetricalpancake.repository;
+package com.jhforfun.symmetricalpancake.repository;
 
-import com.jandh.symmetricalpancake.repository.entity.ProductEntity;
+import com.jhforfun.symmetricalpancake.repository.entity.ProductEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

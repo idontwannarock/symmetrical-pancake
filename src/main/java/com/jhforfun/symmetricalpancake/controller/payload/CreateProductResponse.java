@@ -1,7 +1,7 @@
-package com.jandh.symmetricalpancake.controller.payload;
+package com.jhforfun.symmetricalpancake.controller.payload;
 
-import com.jandh.symmetricalpancake.usecase.CommandOutput;
-import com.jandh.symmetricalpancake.util.CommandStatus;
+import com.jhforfun.symmetricalpancake.usecase.CommandOutput;
+import com.jhforfun.symmetricalpancake.util.CommandStatus;
 
 public class CreateProductResponse implements CommandOutput {
 

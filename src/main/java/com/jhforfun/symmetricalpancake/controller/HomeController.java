@@ -1,4 +1,4 @@
-package com.jandh.symmetricalpancake.controller;
+package com.jhforfun.symmetricalpancake.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

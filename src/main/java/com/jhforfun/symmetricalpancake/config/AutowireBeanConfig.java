@@ -1,8 +1,8 @@
-package com.jandh.symmetricalpancake.config;
+package com.jhforfun.symmetricalpancake.config;
 
-import com.jandh.symmetricalpancake.usecase.product.CreateProductUseCase;
-import com.jandh.symmetricalpancake.usecase.product.ProductGateway;
-import com.jandh.symmetricalpancake.usecase.product.create.CreateProductUseCaseImpl;
+import com.jhforfun.symmetricalpancake.usecase.product.CreateProductUseCase;
+import com.jhforfun.symmetricalpancake.usecase.product.ProductGateway;
+import com.jhforfun.symmetricalpancake.usecase.product.create.CreateProductUseCaseImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

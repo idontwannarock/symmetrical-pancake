@@ -1,4 +1,4 @@
-package com.jandh.symmetricalpancake.controller.payload;
+package com.jhforfun.symmetricalpancake.controller.payload;
 
 import lombok.Data;
 

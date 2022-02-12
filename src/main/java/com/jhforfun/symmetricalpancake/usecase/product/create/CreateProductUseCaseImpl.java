@@ -1,10 +1,10 @@
-package com.jandh.symmetricalpancake.usecase.product.create;
+package com.jhforfun.symmetricalpancake.usecase.product.create;
 
-import com.jandh.symmetricalpancake.usecase.CommandOutput;
-import com.jandh.symmetricalpancake.usecase.product.CreateProductInput;
-import com.jandh.symmetricalpancake.usecase.product.CreateProductUseCase;
-import com.jandh.symmetricalpancake.usecase.product.ProductGateway;
-import com.jandh.symmetricalpancake.util.CommandStatus;
+import com.jhforfun.symmetricalpancake.usecase.CommandOutput;
+import com.jhforfun.symmetricalpancake.usecase.product.CreateProductInput;
+import com.jhforfun.symmetricalpancake.usecase.product.CreateProductUseCase;
+import com.jhforfun.symmetricalpancake.usecase.product.ProductGateway;
+import com.jhforfun.symmetricalpancake.util.CommandStatus;
 
 import java.math.BigDecimal;
 

@@ -1,4 +1,4 @@
-package com.jandh.symmetricalpancake.repository.entity;
+package com.jhforfun.symmetricalpancake.repository.entity;
 
 import lombok.*;
 import org.hibernate.Hibernate;
