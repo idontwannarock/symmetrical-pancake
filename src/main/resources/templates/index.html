@@ -9,12 +9,32 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 <body>
+
+<!-- Navigation bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+
+    <a class="navbar-brand" href="#"><img th:src="@{/logo-192x192.png}"  alt="logo" style="width: 30px; height: 30px"/>  Hello Jessica!</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarPrimaryMenu" aria-controls="navbarPrimaryMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarPrimaryMenu">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" href="#" role="button" data-bs-toggle="collapse" data-bs-target="#secondaryProductMenu" aria-expanded="false" aria-controls="secondaryProductMenu">物料/料件管理</a>
+        </li>
+      </ul>
+
+      <div class="collapse" id="secondaryProductMenu">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createProductModal">新增物料</button>
+      </div>
+
+    </div><!-- navbarPrimaryMenu end -->
+  </div><!-- container-fluid end -->
+</nav>
+
 <div class="container-fluid">
-
-  <h1>Hello Jessica!</h1>
-
-  <!-- Action buttons -->
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createProductModal">新增物料</button>
 
   <!-- Add product modal -->
   <div class="modal fade" id="createProductModal" tabindex="-1" aria-labelledby="createProductModalLabel" aria-hidden="true">
