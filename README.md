@@ -23,3 +23,10 @@ To run in Windows:
 ```bat
 .\gradlew.bat bootRun
 ```
+
+## Git Message Template
+
+```bash
+git config commit.template .gitmessage.txt
+git config --add commit.cleanup strip
+```
