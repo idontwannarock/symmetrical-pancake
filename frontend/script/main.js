@@ -1,4 +1,4 @@
-const backendBaseUrl = "";
+const backendBaseUrl = "/api";
 
 /**
  * initialization

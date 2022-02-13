@@ -21,7 +21,7 @@ function createProduct() {
     const formJsonData = JSON.stringify(getCreateProductFormData());
     // fire off the request
     createProductRequest = $.ajax({
-        url: backendBaseUrl + "/api/product",
+        url: backendBaseUrl + "/product",
         type: "post",
         contentType: "application/json",
         dataType: 'json',
