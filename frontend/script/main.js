@@ -21,4 +21,7 @@ const backendBaseUrl = "";
                 form.classList.add('was-validated')
             }, false)
         })
+
+    // Register events
+    document.getElementById("createProductForm").addEventListener("submit", createProduct);
 })()
