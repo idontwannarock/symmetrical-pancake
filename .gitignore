@@ -38,3 +38,5 @@ out/
 
 ### Customized Ignore ###
 backend/src/main/resources/config/
+logs/
+*.log
