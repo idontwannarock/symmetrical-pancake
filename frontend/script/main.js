@@ -41,7 +41,7 @@ function createProduct() {
     console.log('serialized data: ' + formJsonData);
     // fire off the request
     createProductRequest = $.ajax({
-        url: "/product",
+        url: "/api/product",
         type: "post",
         contentType: "application/json",
         dataType: 'json',
