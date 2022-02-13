@@ -1,3 +1,5 @@
+const backendBaseUrl = "";
+
 // initialize
 (function () {
     'use strict'
@@ -41,7 +43,7 @@ function createProduct() {
     console.log('serialized data: ' + formJsonData);
     // fire off the request
     createProductRequest = $.ajax({
-        url: "/api/product",
+        url: backendBaseUrl + "/api/product",
         type: "post",
         contentType: "application/json",
         dataType: 'json',
