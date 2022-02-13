@@ -19,7 +19,6 @@ function createProduct() {
     $inputs.prop('disabled', true);
     // serialize the data of the form in JSON
     const formJsonData = JSON.stringify(getCreateProductFormData());
-    console.log('serialized data: ' + formJsonData);
     // fire off the request
     createProductRequest = $.ajax({
         url: backendBaseUrl + "/api/product",
@@ -53,5 +52,53 @@ function getCreateProductFormData(){
         type: $("#createProductTypeTextInput").val(),
         name: $("#createProductNameTextInput").val(),
         minimumOrderQuantity: parseFloat($("#createProductMinimumOrderQuantityTextInput").val()).toFixed(3)
+    }
+}
+
+let getProductsRequest;
+
+/**
+ * render product table
+ */
+function renderProductTable() {
+    // abort any pending request
+    if (getProductsRequest) {
+        getProductsRequest.abort();
+    }
+    // fire off the request
+    getProductsRequest = $.ajax({
+        url: backendBaseUrl + "/products",
+        type: "get",
+        async: false
+    });
+    // callback handler that will be called on success
+    getProductsRequest.done(function (response) {
+        $('#productTableBody tr').remove();
+        renderProductTableBody(response.products);
+    });
+    // callback handler that will be called on failure
+    getProductsRequest.fail(function (jqXHR, textStatus, errorThrown) {
+        console.error("Error occurred during get all products: " + textStatus, errorThrown);
+    })
+    // callback handler that will be called regardless the request succeeded or not
+    getProductsRequest.always(function () {
+
+    });
+}
+
+/**
+ * render product table body
+ * @param products
+ */
+function renderProductTableBody(products) {
+    const tbody = $('#productTableBody');
+    for (const product of products) {
+        tbody.append('<tr>')
+            .append('<th scope="row">' + product.id + '</th>')
+            .append('<th>' + product.serialNumber + '</th>')
+            .append('<th>' + product.type + '</th>')
+            .append('<th>' + product.name + '</th>')
+            .append('<th>' + product.minimumOrderQuantity + '</th>')
+            .append('</tr>');
     }
 }

@@ -24,4 +24,7 @@ const backendBaseUrl = "";
 
     // Register events
     document.getElementById("createProductForm").addEventListener("submit", createProduct);
+
+    // Render initial table
+    renderProductTable();
 })()

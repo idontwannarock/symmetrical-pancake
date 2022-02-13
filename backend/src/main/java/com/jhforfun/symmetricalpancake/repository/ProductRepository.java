@@ -1,13 +1,16 @@
 package com.jhforfun.symmetricalpancake.repository;
 
 import com.jhforfun.symmetricalpancake.repository.entity.ProductEntity;
+import com.jhforfun.symmetricalpancake.usecase.product.ProductDto;
 import com.jhforfun.symmetricalpancake.usecase.product.create.CreateProductInput;
 import com.jhforfun.symmetricalpancake.usecase.product.ProductGateway;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Repository
@@ -27,5 +30,18 @@ public class ProductRepository implements ProductGateway {
         entity.setUpdateTime(now);
         entity = peer.save(entity);
         return Optional.of(entity.getId());
+    }
+
+    @Override
+    public List<ProductDto> findAll() {
+        return peer.findAll().stream().map(entity -> {
+            ProductDto product = new ProductDto();
+            product.setId(entity.getId());
+            product.setSerialNumber(entity.getSerialNumber());
+            product.setProductionType(entity.getProductionType());
+            product.setName(entity.getName());
+            product.setMinimumOrderQuantity(entity.getMinimumOrderQuantity());
+            return product;
+        }).collect(Collectors.toList());
     }
 }
