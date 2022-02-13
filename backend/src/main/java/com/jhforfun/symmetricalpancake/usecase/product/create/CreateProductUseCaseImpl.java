@@ -1,8 +1,6 @@
 package com.jhforfun.symmetricalpancake.usecase.product.create;
 
 import com.jhforfun.symmetricalpancake.usecase.CommandOutput;
-import com.jhforfun.symmetricalpancake.usecase.product.CreateProductInput;
-import com.jhforfun.symmetricalpancake.usecase.product.CreateProductUseCase;
 import com.jhforfun.symmetricalpancake.usecase.product.ProductGateway;
 import com.jhforfun.symmetricalpancake.util.CommandStatus;
 

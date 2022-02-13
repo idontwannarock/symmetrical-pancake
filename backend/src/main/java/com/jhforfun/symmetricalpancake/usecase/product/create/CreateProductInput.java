@@ -1,4 +1,4 @@
-package com.jhforfun.symmetricalpancake.usecase.product;
+package com.jhforfun.symmetricalpancake.usecase.product.create;
 
 import java.math.BigDecimal;
 

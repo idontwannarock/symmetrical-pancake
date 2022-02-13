@@ -1,7 +1,7 @@
 package com.jhforfun.symmetricalpancake.repository;
 
 import com.jhforfun.symmetricalpancake.repository.entity.ProductEntity;
-import com.jhforfun.symmetricalpancake.usecase.product.CreateProductInput;
+import com.jhforfun.symmetricalpancake.usecase.product.create.CreateProductInput;
 import com.jhforfun.symmetricalpancake.usecase.product.ProductGateway;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
