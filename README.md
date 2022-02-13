@@ -1,6 +1,6 @@
 # Symmetrical Pancake
 
-A project to make dear Jessica's life easier.
+A project to make my dear Jessica's life easier.
 
 > Fun name suggested by GitHub.
 
@@ -15,13 +15,13 @@ A project to make dear Jessica's life easier.
 To run the app in MacOS or Linux:
 
 ```bash
-./gradlew bootRun
+./backend/gradlew bootRun
 ```
 
 To run in Windows:
 
 ```bat
-.\gradlew.bat bootRun
+.\backend\gradlew.bat bootRun
 ```
 
 ## Git Message Template
