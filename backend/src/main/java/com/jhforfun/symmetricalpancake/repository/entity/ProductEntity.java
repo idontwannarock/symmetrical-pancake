@@ -2,6 +2,8 @@ package com.jhforfun.symmetricalpancake.repository.entity;
 
 import lombok.*;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -28,8 +30,10 @@ public class ProductEntity {
     private String name;
     @Column(name = "minimum_order_quantity", columnDefinition = "NUMERIC(10,3)", nullable = false, precision = 13, scale = 3)
     private BigDecimal minimumOrderQuantity;
+    @CreationTimestamp
     @Column(name = "create_time")
     private LocalDateTime createTime;
+    @UpdateTimestamp
     @Column(name = "update_time", nullable = false)
     private LocalDateTime updateTime;
 
