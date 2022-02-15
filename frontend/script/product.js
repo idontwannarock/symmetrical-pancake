@@ -1,3 +1,16 @@
+/**
+ * initialization
+ */
+(function () {
+    'use strict'
+
+    // Register events
+    document.getElementById("createProductForm").addEventListener("submit", createProduct);
+
+    // Render initial table
+    renderProductTable();
+})()
+
 let createProductRequest;
 
 /**
