@@ -45,9 +45,9 @@ public class ProductController {
         return ResponseEntity.ok(response.getStatus() == CommandStatus.SUCCESS);
     }
 
-    @Operation(summary = "Find all products")
+    @Operation(summary = "Retrieve all products")
     @GetMapping(path = "products", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<FindAllProductsResponse> findAll() {
+    public ResponseEntity<FindAllProductsResponse> retrieveAll() {
         FindAllProductsOutput output = new FindAllProductUseCaseImpl.FindAllProductsOutputImpl();
         findAllProductsUseCase.execute(output);
         FindAllProductsResponse response = new FindAllProductsResponse();
