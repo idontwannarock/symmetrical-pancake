@@ -21,7 +21,7 @@ public class ProductRepository implements ProductGateway {
     @Override
     public Optional<Integer> create(CreateProductInput input) {
         LocalDateTime now = LocalDateTime.now();
-        ProductEntity entity = new ProductEntity();
+        ProductEntity entity = peer.findBySerialNumber(input.getSerialNumber()).orElseGet(ProductEntity::new);
         entity.setSerialNumber(input.getSerialNumber());
         entity.setProductionType(input.getType());
         entity.setName(input.getName());
