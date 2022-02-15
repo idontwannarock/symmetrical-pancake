@@ -5,6 +5,7 @@ import com.jhforfun.symmetricalpancake.usecase.CommandOutput;
 import com.jhforfun.symmetricalpancake.usecase.product.create.CreateProductInput;
 import com.jhforfun.symmetricalpancake.usecase.product.create.CreateProductUseCase;
 import com.jhforfun.symmetricalpancake.usecase.product.create.CreateProductUseCaseImpl;
+import com.jhforfun.symmetricalpancake.usecase.product.delete.DeleteProductUseCase;
 import com.jhforfun.symmetricalpancake.usecase.product.findAll.FindAllProductUseCaseImpl;
 import com.jhforfun.symmetricalpancake.usecase.product.findAll.FindAllProductsOutput;
 import com.jhforfun.symmetricalpancake.usecase.product.findAll.FindAllProductsUseCase;
@@ -29,6 +30,7 @@ public class ProductController {
     private final CreateProductUseCase createProductUseCase;
     private final FindAllProductsUseCase findAllProductsUseCase;
     private final UpdateProductUseCase updateProductUseCase;
+    private final DeleteProductUseCase deleteProductUseCase;
 
     @Operation(summary = "Create a product")
     @PostMapping(path = "product", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -73,5 +75,13 @@ public class ProductController {
         CommandOutput response = new CreateProductResponse();
         updateProductUseCase.execute(request, response);
         return ResponseEntity.ok(response.getStatus() == CommandStatus.SUCCESS);
+    }
+
+    @Operation(summary = "Delete a product")
+    @DeleteMapping(path = "product/{id}")
+    public ResponseEntity<Boolean> delete(@PathVariable Integer id) {
+        CommandOutput response = new CreateProductResponse();
+        deleteProductUseCase.execute(id, response);
+        return ResponseEntity.ok(true);
     }
 }

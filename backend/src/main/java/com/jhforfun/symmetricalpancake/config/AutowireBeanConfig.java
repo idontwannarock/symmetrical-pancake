@@ -3,6 +3,8 @@ package com.jhforfun.symmetricalpancake.config;
 import com.jhforfun.symmetricalpancake.usecase.product.create.CreateProductUseCase;
 import com.jhforfun.symmetricalpancake.usecase.product.ProductGateway;
 import com.jhforfun.symmetricalpancake.usecase.product.create.CreateProductUseCaseImpl;
+import com.jhforfun.symmetricalpancake.usecase.product.delete.DeleteProductUseCase;
+import com.jhforfun.symmetricalpancake.usecase.product.delete.DeleteProductUseCaseImpl;
 import com.jhforfun.symmetricalpancake.usecase.product.findAll.FindAllProductUseCaseImpl;
 import com.jhforfun.symmetricalpancake.usecase.product.findAll.FindAllProductsUseCase;
 import com.jhforfun.symmetricalpancake.usecase.product.update.UpdateProductUseCase;
@@ -26,5 +28,10 @@ public class AutowireBeanConfig {
     @Bean
     public UpdateProductUseCase updateProductUseCase(ProductGateway productGateway) {
         return new UpdateProductUseCaseImpl(productGateway);
+    }
+
+    @Bean
+    public DeleteProductUseCase deleteProductUseCase(ProductGateway productGateway) {
+        return new DeleteProductUseCaseImpl(productGateway);
     }
 }

@@ -1,6 +1,7 @@
 let createProductRequest;
 let getProductsRequest;
 let updateProductRequest;
+let deleteProductRequest;
 
 /**
  * initialization
@@ -17,8 +18,11 @@ let updateProductRequest;
     // Register shown.bs.modal event of editProductModal
     $('#editProductModal').on('shown.bs.modal', populateEditProductForm);
 
-    // Register submit event editProductForm
+    // Register submit event of editProductForm
     $('#editProductForm').on('submit', updateProduct);
+
+    // Register click event of deleteProductButton
+    $('#deleteProductButton').on('click', deleteProduct);
 })()
 
 /**
@@ -191,4 +195,45 @@ function getEditProductFormData() {
         name: $("#editProductNameTextInput").val(),
         minimumOrderQuantity: parseFloat($("#editProductMinimumOrderQuantityTextInput").val()).toFixed(3)
     }
+}
+
+/**
+ * delete product when deleteProductButton button is clicked
+ */
+function deleteProduct() {
+    // cancel request if id is not specified
+    const deleteProductButton = $('#deleteProductButton');
+    const attr = deleteProductButton.attr('data-id');
+    if (typeof attr === 'undefined' || attr === false || attr === '') {
+        console.log('Could not delete product without id.');
+        return;
+    }
+    // abort any pending request
+    if (deleteProductRequest) {
+        deleteProductRequest.abort();
+    }
+    // select and cache all the fields
+    const $inputs = $('#createProductForm').find("input, select, button, textarea");
+    // disable the inputs for the duration of the ajax request
+    $inputs.prop('disabled', true);
+    // serialize the data of the form in JSON
+    const id = deleteProductButton.attr('data-id');
+    // fire off the request
+    deleteProductRequest = $.ajax({
+        url: backendBaseUrl + "/product/" + id,
+        type: "delete",
+    });
+    // callback handler that will be called on success
+    deleteProductRequest.done(function () {
+        console.log("Product deleted.");
+        renderProductTable();
+    });
+    // callback handler that will be called on failure
+    deleteProductRequest.fail(function (jqXHR, textStatus, errorThrown) {
+        console.error("Error occurred during product deletion: " + textStatus, errorThrown);
+    })
+    // callback handler that will be called regardless the request succeeded or not
+    deleteProductRequest.always(function () {
+        $inputs.prop("disabled", false);
+    });
 }

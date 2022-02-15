@@ -52,4 +52,9 @@ public class ProductRepository implements ProductGateway {
         entity = peer.save(entity);
         return Optional.of(entity.getId());
     }
+
+    @Override
+    public void delete(int id) {
+        peer.deleteById(id);
+    }
 }
