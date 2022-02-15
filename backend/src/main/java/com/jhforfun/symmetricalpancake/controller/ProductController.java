@@ -11,6 +11,7 @@ import com.jhforfun.symmetricalpancake.usecase.product.create.CreateProductUseCa
 import com.jhforfun.symmetricalpancake.usecase.product.findAll.FindAllProductUseCaseImpl;
 import com.jhforfun.symmetricalpancake.usecase.product.findAll.FindAllProductsOutput;
 import com.jhforfun.symmetricalpancake.usecase.product.findAll.FindAllProductsUseCase;
+import com.jhforfun.symmetricalpancake.util.CommandStatus;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -41,7 +42,7 @@ public class ProductController {
                 .minimumOrderQuantity(payload.getMinimumOrderQuantity());
         CommandOutput response = new CreateProductResponse();
         createProductUseCase.execute(request, response);
-        return ResponseEntity.ok(true);
+        return ResponseEntity.ok(response.getStatus() == CommandStatus.SUCCESS);
     }
 
     @Operation(summary = "Find all products")
