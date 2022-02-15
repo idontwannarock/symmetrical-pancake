@@ -1,9 +1,6 @@
 package com.jhforfun.symmetricalpancake.controller;
 
-import com.jhforfun.symmetricalpancake.controller.payload.CreateProductRequest;
-import com.jhforfun.symmetricalpancake.controller.payload.CreateProductResponse;
-import com.jhforfun.symmetricalpancake.controller.payload.FindAllProductsResponse;
-import com.jhforfun.symmetricalpancake.controller.payload.ProductPayload;
+import com.jhforfun.symmetricalpancake.controller.payload.*;
 import com.jhforfun.symmetricalpancake.usecase.CommandOutput;
 import com.jhforfun.symmetricalpancake.usecase.product.create.CreateProductInput;
 import com.jhforfun.symmetricalpancake.usecase.product.create.CreateProductUseCase;
@@ -11,16 +8,16 @@ import com.jhforfun.symmetricalpancake.usecase.product.create.CreateProductUseCa
 import com.jhforfun.symmetricalpancake.usecase.product.findAll.FindAllProductUseCaseImpl;
 import com.jhforfun.symmetricalpancake.usecase.product.findAll.FindAllProductsOutput;
 import com.jhforfun.symmetricalpancake.usecase.product.findAll.FindAllProductsUseCase;
+import com.jhforfun.symmetricalpancake.usecase.product.update.UpdateProductInput;
+import com.jhforfun.symmetricalpancake.usecase.product.update.UpdateProductUseCase;
+import com.jhforfun.symmetricalpancake.usecase.product.update.UpdateProductUseCaseImpl;
 import com.jhforfun.symmetricalpancake.util.CommandStatus;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.stream.Collectors;
 
@@ -31,6 +28,7 @@ public class ProductController {
 
     private final CreateProductUseCase createProductUseCase;
     private final FindAllProductsUseCase findAllProductsUseCase;
+    private final UpdateProductUseCase updateProductUseCase;
 
     @Operation(summary = "Create a product")
     @PostMapping(path = "product", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -61,5 +59,19 @@ public class ProductController {
             return payload;
         }).collect(Collectors.toList()));
         return ResponseEntity.ok(response);
+    }
+
+    @Operation(summary = "Update a product")
+    @PutMapping(path = "product", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Boolean> update(@RequestBody UpdateProductRequest payload) {
+        UpdateProductInput request = new UpdateProductUseCaseImpl.UpdateProductInputImpl()
+                .id(payload.getId())
+                .serialNumber(payload.getSerialNumber())
+                .type(payload.getType())
+                .name(payload.getName())
+                .minimumOrderQuantity(payload.getMinimumOrderQuantity());
+        CommandOutput response = new CreateProductResponse();
+        updateProductUseCase.execute(request, response);
+        return ResponseEntity.ok(response.getStatus() == CommandStatus.SUCCESS);
     }
 }

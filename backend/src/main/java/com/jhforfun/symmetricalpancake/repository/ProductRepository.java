@@ -2,8 +2,9 @@ package com.jhforfun.symmetricalpancake.repository;
 
 import com.jhforfun.symmetricalpancake.repository.entity.ProductEntity;
 import com.jhforfun.symmetricalpancake.usecase.product.ProductDto;
-import com.jhforfun.symmetricalpancake.usecase.product.create.CreateProductInput;
 import com.jhforfun.symmetricalpancake.usecase.product.ProductGateway;
+import com.jhforfun.symmetricalpancake.usecase.product.create.CreateProductInput;
+import com.jhforfun.symmetricalpancake.usecase.product.update.UpdateProductInput;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -39,5 +40,16 @@ public class ProductRepository implements ProductGateway {
             product.setMinimumOrderQuantity(entity.getMinimumOrderQuantity());
             return product;
         }).collect(Collectors.toList());
+    }
+
+    @Override
+    public Optional<Integer> update(UpdateProductInput input) {
+        ProductEntity entity = peer.findById(input.getId()).orElseGet(ProductEntity::new);
+        entity.setSerialNumber(input.getSerialNumber());
+        entity.setProductionType(input.getType());
+        entity.setName(input.getName());
+        entity.setMinimumOrderQuantity(input.getMinimumOrderQuantity());
+        entity = peer.save(entity);
+        return Optional.of(entity.getId());
     }
 }
