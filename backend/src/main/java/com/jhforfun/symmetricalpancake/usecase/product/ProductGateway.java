@@ -15,4 +15,6 @@ public interface ProductGateway {
     Optional<Integer> update(UpdateProductInput input);
 
     void delete(int id);
+
+    List<ProductWithEntryCountDto> findAllProductWithEntryCount();
 }

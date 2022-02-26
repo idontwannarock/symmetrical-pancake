@@ -2,6 +2,9 @@ package com.jhforfun.symmetricalpancake.controller;
 
 import com.jhforfun.symmetricalpancake.controller.payload.*;
 import com.jhforfun.symmetricalpancake.usecase.CommandOutput;
+import com.jhforfun.symmetricalpancake.usecase.product.findAllWithEntryCount.FindAllProductWithEntryCountOutput;
+import com.jhforfun.symmetricalpancake.usecase.product.findAllWithEntryCount.FindAllProductWithEntryCountUseCase;
+import com.jhforfun.symmetricalpancake.usecase.product.findAllWithEntryCount.FindAllProductWithEntryCountUseCaseImpl;
 import com.jhforfun.symmetricalpancake.usecase.product.create.CreateProductInput;
 import com.jhforfun.symmetricalpancake.usecase.product.create.CreateProductUseCase;
 import com.jhforfun.symmetricalpancake.usecase.product.create.CreateProductUseCaseImpl;
@@ -31,6 +34,7 @@ public class ProductController {
     private final FindAllProductsUseCase findAllProductsUseCase;
     private final UpdateProductUseCase updateProductUseCase;
     private final DeleteProductUseCase deleteProductUseCase;
+    private final FindAllProductWithEntryCountUseCase findAllProductWithEntryCountUseCase;
 
     @Operation(summary = "Create a product")
     @PostMapping(path = "product", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -83,5 +87,23 @@ public class ProductController {
         CommandOutput response = new CreateProductResponse();
         deleteProductUseCase.execute(id, response);
         return ResponseEntity.ok(true);
+    }
+
+    @Operation(summary = "Retrieve entry count of all products")
+    @GetMapping(path = "products/bom/entryCount")
+    public ResponseEntity<FindAllProductsWithEntryCountResponse> retrieveAllProductWithEntryCount() {
+        FindAllProductWithEntryCountOutput output = new FindAllProductWithEntryCountUseCaseImpl.FindAllProductWithEntryCountOutputImpl();
+        findAllProductWithEntryCountUseCase.execute(output);
+        FindAllProductsWithEntryCountResponse response = new FindAllProductsWithEntryCountResponse();
+        response.setEntryCounts(output.getProductsWithEntryCount().stream().map(entryCount -> {
+            ProductWithEntryCountPayload payload = new ProductWithEntryCountPayload();
+            payload.setId(entryCount.getId());
+            payload.setSerialNumber(entryCount.getSerialNumber());
+            payload.setType(entryCount.getType());
+            payload.setName(entryCount.getName());
+            payload.setEntryCount(entryCount.getEntryCount());
+            return payload;
+        }).collect(Collectors.toList()));
+        return ResponseEntity.ok(response);
     }
 }

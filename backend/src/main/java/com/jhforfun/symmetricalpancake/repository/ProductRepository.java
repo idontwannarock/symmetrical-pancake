@@ -3,6 +3,7 @@ package com.jhforfun.symmetricalpancake.repository;
 import com.jhforfun.symmetricalpancake.repository.entity.ProductEntity;
 import com.jhforfun.symmetricalpancake.usecase.product.ProductDto;
 import com.jhforfun.symmetricalpancake.usecase.product.ProductGateway;
+import com.jhforfun.symmetricalpancake.usecase.product.ProductWithEntryCountDto;
 import com.jhforfun.symmetricalpancake.usecase.product.create.CreateProductInput;
 import com.jhforfun.symmetricalpancake.usecase.product.update.UpdateProductInput;
 import lombok.RequiredArgsConstructor;
@@ -56,5 +57,18 @@ public class ProductRepository implements ProductGateway {
     @Override
     public void delete(int id) {
         peer.deleteById(id);
+    }
+
+    @Override
+    public List<ProductWithEntryCountDto> findAllProductWithEntryCount() {
+        return peer.findAllProductWithEntryCount().stream().map(product -> {
+            ProductWithEntryCountDto dto = new ProductWithEntryCountDto();
+            dto.setId(product.getId());
+            dto.setSerialNumber(product.getSerialNumber());
+            dto.setType(product.getProductionType());
+            dto.setName(product.getName());
+            dto.setEntryCount(product.getEntryCount());
+            return dto;
+        }).collect(Collectors.toList());
     }
 }
