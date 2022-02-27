@@ -52,6 +52,35 @@
     </table>
   </div>
 
+  <div class="modal fade" id="editProductBomModal" tabindex="-1" aria-labelledby="editProductBomModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editProductBomModalLabel">編輯物料 BOM 表</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <table class="table align-middle" id="productBomTable">
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col" hidden>物料 ID</th>
+              <th scope="col" hidden>料件 ID</th>
+              <th scope="col">料號 (MATNR)</th>
+              <th scope="col">品名 (MAKTX)</th>
+              <th scope="col">使用量</th>
+            </tr>
+            </thead>
+            <tbody id="productBomTableBody"></tbody>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div><!-- container-fluid end -->
 
 <script type="text/javascript" src="script/main.js"></script>

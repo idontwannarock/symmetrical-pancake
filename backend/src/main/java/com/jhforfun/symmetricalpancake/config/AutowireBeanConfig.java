@@ -1,5 +1,8 @@
 package com.jhforfun.symmetricalpancake.config;
 
+import com.jhforfun.symmetricalpancake.usecase.bom.BomGateway;
+import com.jhforfun.symmetricalpancake.usecase.bom.findAllEntries.FindAllEntriesOfProductUseCase;
+import com.jhforfun.symmetricalpancake.usecase.bom.findAllEntries.FindAllEntriesOfProductUseCaseImpl;
 import com.jhforfun.symmetricalpancake.usecase.product.findAllWithEntryCount.FindAllProductWithEntryCountUseCase;
 import com.jhforfun.symmetricalpancake.usecase.product.findAllWithEntryCount.FindAllProductWithEntryCountUseCaseImpl;
 import com.jhforfun.symmetricalpancake.usecase.product.ProductGateway;
@@ -40,5 +43,10 @@ public class AutowireBeanConfig {
     @Bean
     public FindAllProductWithEntryCountUseCase findAllProductWithEntryCountUseCase(ProductGateway productGateway) {
         return new FindAllProductWithEntryCountUseCaseImpl(productGateway);
+    }
+
+    @Bean
+    public FindAllEntriesOfProductUseCase findAllEntriesOfProductUseCase(BomGateway bomGateway) {
+        return new FindAllEntriesOfProductUseCaseImpl(bomGateway);
     }
 }
