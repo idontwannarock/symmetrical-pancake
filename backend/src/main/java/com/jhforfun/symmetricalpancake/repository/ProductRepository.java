@@ -32,13 +32,14 @@ public class ProductRepository implements ProductGateway {
 
     @Override
     public List<ProductDto> findAll() {
-        return peer.findAll().stream().map(entity -> {
+        return peer.findAllProductWithEntryCount().stream().map(entity -> {
             ProductDto product = new ProductDto();
             product.setId(entity.getId());
             product.setSerialNumber(entity.getSerialNumber());
             product.setProductionType(entity.getProductionType());
             product.setName(entity.getName());
             product.setMinimumOrderQuantity(entity.getMinimumOrderQuantity());
+            product.setBomEntryCount(entity.getEntryCount());
             return product;
         }).collect(Collectors.toList());
     }

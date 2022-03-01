@@ -12,4 +12,5 @@ public class ProductPayload {
     private String type;
     private String name;
     private BigDecimal minimumOrderQuantity;
+    private Long bomEntryCount;
 }

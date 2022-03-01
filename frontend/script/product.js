@@ -117,12 +117,13 @@ function renderProductTable() {
 function renderProductTableBody(products) {
     const tbody = $('#productTableBody');
     for (const product of products) {
-        tbody.append('<tr data-bs-toggle="modal" data-bs-target="#editProductModal">' +
+        tbody.append('<td data-bs-toggle="modal" data-bs-target="#editProductModal">' +
             '<td class="productTableRowId">' + product.id + '</td>' +
             '<td class="productTableRowSerialNumber">' + product.serialNumber + '</td>' +
             '<td class="productTableRowType">' + product.type + '</td>' +
             '<td class="productTableRowName">' + product.name + '</td>' +
             '<td class="productTableRowMinimumOrderQuantity">' + product.minimumOrderQuantity + '</td>' +
+            '<td class="productTableRowBomEntryCount">' + product.bomEntryCount + '</td>' +
             '</tr>');
     }
 }

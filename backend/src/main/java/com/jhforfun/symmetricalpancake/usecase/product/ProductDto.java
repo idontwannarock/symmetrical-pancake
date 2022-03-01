@@ -10,6 +10,7 @@ public class ProductDto {
     private String productionType;
     private String name;
     private BigDecimal minimumOrderQuantity;
+    private Long bomEntryCount;
 
     public Integer getId() {
         return id;
@@ -51,17 +52,25 @@ public class ProductDto {
         this.minimumOrderQuantity = minimumOrderQuantity;
     }
 
+    public Long getBomEntryCount() {
+        return bomEntryCount;
+    }
+
+    public void setBomEntryCount(Long bomEntryCount) {
+        this.bomEntryCount = bomEntryCount;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof ProductDto)) return false;
         ProductDto that = (ProductDto) o;
-        return id.equals(that.id) && serialNumber.equals(that.serialNumber) && productionType.equals(that.productionType) && name.equals(that.name) && minimumOrderQuantity.equals(that.minimumOrderQuantity);
+        return Objects.equals(getId(), that.getId()) && Objects.equals(getSerialNumber(), that.getSerialNumber()) && Objects.equals(getProductionType(), that.getProductionType()) && Objects.equals(getName(), that.getName()) && Objects.equals(getMinimumOrderQuantity(), that.getMinimumOrderQuantity()) && Objects.equals(getBomEntryCount(), that.getBomEntryCount());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, serialNumber, productionType, name, minimumOrderQuantity);
+        return Objects.hash(getId(), getSerialNumber(), getProductionType(), getName(), getMinimumOrderQuantity(), getBomEntryCount());
     }
 
     @Override
@@ -72,6 +81,7 @@ public class ProductDto {
                 ", productionType='" + productionType + '\'' +
                 ", name='" + name + '\'' +
                 ", minimumOrderQuantity=" + minimumOrderQuantity +
+                ", bomEntryCount=" + bomEntryCount +
                 '}';
     }
 }

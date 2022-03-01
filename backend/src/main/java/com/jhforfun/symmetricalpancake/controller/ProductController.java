@@ -62,6 +62,7 @@ public class ProductController {
             payload.setType(product.getProductionType());
             payload.setName(product.getName());
             payload.setMinimumOrderQuantity(product.getMinimumOrderQuantity());
+            payload.setBomEntryCount(product.getBomEntryCount());
             return payload;
         }).collect(Collectors.toList()));
         return ResponseEntity.ok(response);
