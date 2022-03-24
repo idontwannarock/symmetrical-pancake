@@ -15,13 +15,13 @@ A project to make my dear Jessica's life easier.
 To run the app in MacOS or Linux:
 
 ```bash
-./backend/gradlew bootRun
+./gradlew bootRun
 ```
 
 To run in Windows:
 
 ```bat
-.\backend\gradlew.bat bootRun
+.\gradlew.bat bootRun
 ```
 
 ## Git Message Template

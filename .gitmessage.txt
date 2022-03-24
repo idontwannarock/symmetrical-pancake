@@ -1,5 +1,3 @@
-# Please write commit message in following format. Note that there is a space after the colon.
-#
 # <type>: <subject> {mandatory}
 #
 # <body> {optional}
